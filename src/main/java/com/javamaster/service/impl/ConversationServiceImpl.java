@@ -75,6 +75,11 @@ public class ConversationServiceImpl implements IConversationService {
 			member.setNameUser(user.getFullName());
 			member.setConversationId(autoId);
 			member.setMessages(Arrays.asList());
+			if(user.getAvatar()!=null) {
+				member.setAvatar(user.getAvatar());
+			}else {
+				member.setAvatar("https://th.bing.com/th/id/OIP.cUUf67YH-hex_XPKWlnZ1QHaLF?pid=ImgDet&rs=1");
+			}
 			Member memberTemp = memberService.createMember(member);
 			memberInGroup.add(memberTemp.getId());
 

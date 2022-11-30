@@ -47,6 +47,7 @@ public class AuthServiceImpl implements IAuthService {
 		User user = new User();
 		user.setFullName(modelRegisterAccount.getFullName());
 		user.setPhoneNumber(modelRegisterAccount.getPhoneNumber());
+		user.setAvatar("https://th.bing.com/th/id/OIP.cUUf67YH-hex_XPKWlnZ1QHaLF?pid=ImgDet&rs=1");
 
 		user = userService.addUser(user);
 
