@@ -64,8 +64,8 @@ public class AuthServiceImpl implements IAuthService {
 	public Account login(ModelLogin modelLogin) throws InterruptedException, ExecutionException {
 
 		Account account = accountService.getAccountByPhoneNumber(modelLogin.getPhoneNumber());
-		
-		if(account.getPassword().equals(modelLogin.getPassword())) {
+		String password = org.apache.commons.codec.digest.DigestUtils.sha256Hex(modelLogin.getPassword());
+		if(account.getPassword().equals(password)) {
 			return account;
 		} else {
 			return null;

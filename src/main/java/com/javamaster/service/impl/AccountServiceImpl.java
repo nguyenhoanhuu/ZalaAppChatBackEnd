@@ -1,6 +1,7 @@
 package com.javamaster.service.impl;
 
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -39,6 +40,9 @@ public class AccountServiceImpl implements IAccountService{
 			String autoId = dbFireStore.collection(COLLECTION_NAME).document(Internal.autoId()).getId();
 			
 			account.setId(autoId);
+			String passwordEncode = org.apache.commons.codec.digest.DigestUtils.sha256Hex(account.getPassword());
+//			String passwordEncode = Base64.getEncoder().encodeToString(account.getPassword().getBytes());
+			account.setPassword(passwordEncode);
 			
 			ApiFuture<WriteResult> collectionAPIFuture = dbFireStore.collection(COLLECTION_NAME).document(autoId)
 					.set(account);
