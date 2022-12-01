@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,12 +37,27 @@ public class AccountController {
 	
 	@PutMapping("")
 	public int updateAccount(@RequestBody Account model) {
-		
 		try {
 			int status = accountService.updateAccount(model);
 			return status;
 		} catch (Exception e) {
 			return 1;
+		}
+	}
+	
+	@PostMapping("/checkPassword")
+	public boolean checkPassword(@RequestParam(name = "passwordSHA256") String passwordSHA256, @RequestParam(name = "password") String password) {
+		
+		String temp = org.apache.commons.codec.digest.DigestUtils.sha256Hex(password);
+		
+		try {
+			if(temp.equals(passwordSHA256)) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (Exception e) {
+			return false;
 		}
 	}
 }

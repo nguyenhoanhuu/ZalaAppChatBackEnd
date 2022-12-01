@@ -69,7 +69,7 @@ public class AccountServiceImpl implements IAccountService{
 	@Override
 	public int updateAccount(Account account) {
 		try {
-			
+			account.setPassword(org.apache.commons.codec.digest.DigestUtils.sha256Hex(account.getPassword()));
 			Firestore dbFireStore = FirestoreClient.getFirestore();
 			ApiFuture<WriteResult> collectionAPIFuture = dbFireStore.collection(COLLECTION_NAME).document(account.getId())
 					.set(account);
