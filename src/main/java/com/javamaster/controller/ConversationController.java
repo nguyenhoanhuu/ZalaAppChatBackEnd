@@ -103,9 +103,6 @@ public class ConversationController {
 			throws InterruptedException, ExecutionException, TimeoutException {
 		Conversation conversation = conversationService.addFriendInConversation(
 				addMemberInGroup.getConversationId().trim(), addMemberInGroup.getUserId().trim());
-//		if(conversation!=null) {
-//			userService.addConversationInUser(addMemberInGroup.getUserId().trim(), addMemberInGroup.getConversationId().trim());
-//		}
 
 		return conversation;
 	}

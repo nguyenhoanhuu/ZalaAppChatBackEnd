@@ -19,7 +19,7 @@ public class FirebaseConfig {
 	public void initFirebase() {
 		FileInputStream serviceAccount = null;
 		try {
-			serviceAccount = new FileInputStream("./zala-chatapp-firebase-adminsdk-ku47c-c22e18a4f0.json");
+			serviceAccount = new FileInputStream("./zala-d8638-firebase-adminsdk-47cca-8466dbda87.json");
 
 			FirebaseOptions options = new FirebaseOptions.Builder()
 					.setCredentials(GoogleCredentials.fromStream(serviceAccount)).build();
@@ -28,7 +28,7 @@ public class FirebaseConfig {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			// TODO: handle exception
+			
 		}
 	}
 
@@ -36,18 +36,3 @@ public class FirebaseConfig {
 		return FirestoreClient.getFirestore();
 	}
 }
-
-/*
- * }<!--https:// mvnrepository.com/artifact/com.google.firebase/firebase-admin
- * --> <!--https://
- * mvnrepository.com/artifact/com.google.firebase/firebase-admin -->
- * <!--https:// mvnrepository.com/artifact/com.google.firebase/firebase-admin
- * --> <!--<dependency>--><!--<groupId>com.google.firebase</groupId>--><!--<
- * artifactId>firebase-admin</artifactId>--><!--<version>9.0.0</version>--><!--<
- * scope>runtime</scope>--><!--</dependency>--><!--<dependency>--><!--<groupId>
- * com.google.firebase</groupId>--><!--<artifactId>firebase-server-sdk</
- * artifactId>--><!--<version>3.0.1</version>--><!--</dependency>--><!--<
- * dependency>--><!--<groupId>com.google.auth</groupId>--><!--<artifactId>google
- * -auth-library-oauth2-http</artifactId>--><!--<version>0.4.0</version>--><!--<
- * /dependency>-->
- */
